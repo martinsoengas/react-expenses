@@ -23,7 +23,22 @@ const NewExpense = (props) => {
     setIsEditing(false);
   };
 
-  return (
+  const hideForm = (
+    <button onClick={startEditingHandler}>Add New Expense</button>
+  );
+
+  const showForm = (
+    <ExpenseForm
+      onSaveExpenseData={saveExpenseDataHandler}
+      onCancel={stopEditingHandler}
+    />
+  );
+
+  return <div className="new-expense">{isEditing ? showForm : hideForm}</div>;
+};
+
+// ALTERNATIVE
+/*   return (
     <div className="new-expense">
       {!isEditing && (
         <button onClick={startEditingHandler}>Add New Expense</button>
@@ -35,7 +50,7 @@ const NewExpense = (props) => {
         />
       )}
     </div>
-  );
-};
+  ); 
+};*/
 
 export default NewExpense;
